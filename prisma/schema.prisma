@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  username  String   @unique @db.VarChar(50)
+  password  String   @db.VarChar(255)
+  name      String   @db.VarChar(100)
+  role      String   @default("student") @db.VarChar(20)
+  avatarUrl String?  @map("avatar_url")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("users")
+}
+
+model News {
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String   @db.VarChar(255)
+  summary     String?
+  content     String?
+  imageUrl    String?  @map("image_url")
+  publishedAt DateTime @default(dbgenerated("CURRENT_DATE")) @map("published_at") @db.Date
+  authorName  String?  @map("author_name") @db.VarChar(100)
+  category    String?  @db.VarChar(50)
+  galleryUrls String[] @map("gallery_urls")
+  pdfUrl      String?  @map("pdf_url")
+  pdfName     String?  @map("pdf_name") @db.VarChar(255)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("news")
+}
+
+model Lecturer {
+  id               String   @id @default(uuid()) @db.Uuid
+  name             String   @db.VarChar(100)
+  title            String?  @db.VarChar(100)
+  specialization   String?
+  email            String?  @db.VarChar(100)
+  emailSecondary   String?  @map("email_secondary") @db.VarChar(100)
+  imageUrl         String?  @map("image_url")
+  nik              String?  @db.VarChar(50)
+  programStudy     String?  @map("program_study") @db.VarChar(100)
+  lastEducation    String?  @map("last_education") @db.VarChar(100)
+  educationHistory String[] @map("education_history")
+  socialLinks      Json?    @map("social_links")
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("lecturers")
+}
+
+model Course {
+  code                    String   @id @db.VarChar(20)
+  name                    String   @db.VarChar(100)
+  nameEn                  String?  @map("name_en") @db.VarChar(100)
+  type                    String?  @db.VarChar(20)
+  semester                Int?
+  credits                 Int?
+  creditsTheory           Int?     @map("credits_theory")
+  creditsSeminar          Int?     @map("credits_seminar")
+  creditsPracticum        Int?     @map("credits_practicum")
+  description             String?
+  syllabusUrl             String?  @map("syllabus_url")
+  learningOutcomesGeneral String[] @map("learning_outcomes_general")
+  references              String[]
+  createdAt               DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("courses")
+}
+
+model Facility {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @db.VarChar(100)
+  description String?
+  imageUrl    String?  @map("image_url")
+  capacity    Int?
+  galleryUrls String[] @map("gallery_urls")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("facilities")
+}
+
+model Message {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String   @db.VarChar(100)
+  email     String   @db.VarChar(100)
+  message   String
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("messages")
+}
+
+model Setting {
+  key   String @id @db.VarChar(50)
+  value String
+  @@map("settings")
+}
