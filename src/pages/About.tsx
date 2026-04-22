@@ -1,6 +1,6 @@
 import React from 'react';
 import { Target, Eye, CheckCircle, Download } from 'lucide-react';
-import { ACCREDITATION_CERT_URL } from '../constants';
+import { ACCREDITATION_CERT_URL, ACCREDITATION_CERT_IMG_URL } from '../constants';
 import PageHeader from '../components/PageHeader';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -66,7 +66,7 @@ const About: React.FC = () => {
                         <div className="flex flex-col items-center">
                             <div className="relative group w-full max-w-md shadow-2xl border-8 border-white dark:border-slate-800 rounded-lg overflow-hidden mb-6 transform transition hover:scale-[1.02]">
                                 <img
-                                    src={ACCREDITATION_CERT_URL}
+                                    src={ACCREDITATION_CERT_IMG_URL}
                                     alt="Sertifikat Akreditasi"
                                     className="w-full h-auto object-cover"
                                 />
@@ -74,7 +74,7 @@ const About: React.FC = () => {
                             </div>
                             <a
                                 href={ACCREDITATION_CERT_URL}
-                                download="Sertifikat_Akreditasi_RPE.jpg"
+                                download="Sertifikat_Akreditasi_RPE.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center px-6 py-3 bg-sea-600 hover:bg-sea-700 text-white font-bold rounded-lg shadow-lg shadow-sea-600/20 transition-all transform hover:-translate-y-1"

@@ -6,7 +6,8 @@ export const HERO_IMAGE = "https://images.unsplash.com/photo-1581093458791-9f3c3
 export const LOGO_URL = "https://cdn-icons-png.flaticon.com/512/3109/3109840.png";
 
 // Placeholder image for Accreditation Certificate - Replace with actual uploaded URL or Base64
-export const ACCREDITATION_CERT_URL = "https://img.freepik.com/free-vector/modern-certificate-template_1017-15183.jpg?w=1380&t=st=1716360000~exp=1716360600~hmac=abcdef123456";
+export const ACCREDITATION_CERT_URL = "https://www.polibatam.ac.id/wp-content/uploads/2021/10/1748828388-Sertifikat_RPE_2023-2028.pdf";
+export const ACCREDITATION_CERT_IMG_URL = "/images/Akreditasi-Sertifikat_RPE_2023-2028.jpg";
 
 export const INITIAL_STATS: Statistics = {
   students: '450+',
