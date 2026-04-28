@@ -11,6 +11,11 @@ const Curriculum: React.FC = () => {
   const { courses, curriculumFile } = useAcademic();
   const [openSemesters, setOpenSemesters] = useState<number[]>([6]); // Default to semester 6 for demo as per image
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const fallbackCurriculumFile = {
+    url: 'https://www.polibatam.ac.id/wp-content/uploads/2021/10/Rekayasa-Pembangkit-Energi.pdf',
+    name: 'Rekayasa-Pembangkit-Energi.pdf'
+  };
+  const activeCurriculumFile = curriculumFile ?? fallbackCurriculumFile;
 
   const toggleSemester = (semester: number) => {
     setOpenSemesters(prev =>
@@ -23,16 +28,7 @@ const Curriculum: React.FC = () => {
   const semesters = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const handleDownload = () => {
-    if (curriculumFile) {
-      const link = document.createElement('a');
-      link.href = curriculumFile.url;
-      link.download = curriculumFile.name;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } else {
-      alert(t.academic.curriculum.doc_unavailable);
-    }
+    window.open(activeCurriculumFile.url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -142,14 +138,10 @@ const Curriculum: React.FC = () => {
       <div className="flex justify-center mb-12 mt-8">
         <button
           onClick={handleDownload}
-          disabled={!curriculumFile}
-          className={`inline-flex items-center px-8 py-3 font-bold rounded-lg shadow-lg transition transform hover:-translate-y-1 ${curriculumFile
-            ? 'bg-sea-500 hover:bg-sea-600 text-white shadow-sea-500/30'
-            : 'bg-slate-300 dark:bg-slate-700 text-slate-500 dark:text-slate-400 cursor-not-allowed'
-            }`}
+          className="inline-flex items-center px-8 py-3 font-bold rounded-lg shadow-lg transition transform hover:-translate-y-1 bg-sea-500 hover:bg-sea-600 text-white shadow-sea-500/30"
         >
           <Download size={20} className="mr-2" />
-          {curriculumFile ? t.academic.curriculum.download_btn : t.academic.curriculum.doc_unavailable}
+          {t.academic.curriculum.download_btn}
         </button>
       </div>
 
