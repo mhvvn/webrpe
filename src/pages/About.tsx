@@ -6,6 +6,22 @@ import { useLanguage } from '../context/LanguageContext';
 
 const About: React.FC = () => {
     const { t } = useLanguage();
+    const peoItems = [t.about.peo_1, t.about.peo_2, t.about.peo_3];
+    const cpmItems = [
+        t.about.cpm_1,
+        t.about.cpm_2,
+        t.about.cpm_3,
+        t.about.cpm_4,
+        t.about.cpm_5,
+        t.about.cpm_6,
+        t.about.cpm_7,
+        t.about.cpm_8,
+        t.about.cpm_9,
+        t.about.cpm_10,
+        t.about.cpm_11,
+    ];
+    const careerItems = [t.about.career_1, t.about.career_2, t.about.career_3, t.about.career_4];
+
     return (
         <div className="bg-slate-50 dark:bg-slate-950 pb-20">
             <PageHeader
@@ -108,6 +124,35 @@ const About: React.FC = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div className="mt-12 grid grid-cols-1 gap-8">
+                    <section className="bg-white dark:bg-slate-900 rounded-2xl p-8 sm:p-10 shadow-lg border border-slate-100 dark:border-slate-800">
+                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">{t.about.peo_title}</h3>
+                        <ol className="list-decimal list-inside space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+                            {peoItems.map((item, idx) => (
+                                <li key={idx}>{item}</li>
+                            ))}
+                        </ol>
+                    </section>
+
+                    <section className="bg-white dark:bg-slate-900 rounded-2xl p-8 sm:p-10 shadow-lg border border-slate-100 dark:border-slate-800">
+                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">{t.about.cpm_title}</h3>
+                        <ol className="list-decimal list-inside space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+                            {cpmItems.map((item, idx) => (
+                                <li key={idx}>{item}</li>
+                            ))}
+                        </ol>
+                    </section>
+
+                    <section className="bg-white dark:bg-slate-900 rounded-2xl p-8 sm:p-10 shadow-lg border border-slate-100 dark:border-slate-800">
+                        <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">{t.about.career_title}</h3>
+                        <ol className="list-decimal list-inside space-y-2 text-slate-600 dark:text-slate-300 leading-relaxed">
+                            {careerItems.map((item, idx) => (
+                                <li key={idx}>{item}</li>
+                            ))}
+                        </ol>
+                    </section>
                 </div>
             </div>
         </div>
