@@ -79,8 +79,7 @@ const Contact: React.FC = () => {
                                 </div>
                                 <div>
                                     <h3 className="font-semibold text-slate-900 dark:text-white mb-1">{t.contact.email_title}</h3>
-                                    <p className="text-slate-600 dark:text-slate-300">info.rpe@polibatam.ac.id</p>
-                                    <p className="text-slate-600 dark:text-slate-300">admissions@polibatam.ac.id</p>
+                                    <p className="text-slate-600 dark:text-slate-300">kps-rpe@polibatam.ac.id</p>
                                 </div>
                             </div>
                         </div>

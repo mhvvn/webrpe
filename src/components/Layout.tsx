@@ -327,7 +327,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={18} className="text-amber-500 shrink-0" />
-                <span>info.rpe@polibatam.ac.id</span>
+                <span>kps-rpe@polibatam.ac.id</span>
               </li>
             </ul>
           </div>
